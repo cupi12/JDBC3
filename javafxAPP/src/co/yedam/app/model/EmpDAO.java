@@ -101,23 +101,34 @@ public class EmpDAO {
 		// 4.조회 결과
 	}// end of delete()
 	
-	public ArrayList<EmpDO> selectAll() throws SQLException {//전체조회
+	public ArrayList<EmpDO> selectAll()  {//전체조회
 		ArrayList<EmpDO> list = new ArrayList<EmpDO>();
-		
-		// 3. SQL 구문 실행
-		String sql = " select * from departments order by employee_id";
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		pstmt.setInt(1, dept_id);
-		ResultSet rs = pstmt.executeQuery();
-		while(rs.next()) {
-			EmpDO empDO = new EmpDO();
-			empDO.setEmployeeId(rs.getString("employee_id"));
-			empDO.setLastName(rs.getString("last_name"));
-			empDO.setEmail(rs.getString("email"));
-			empDO.setHireDate(rs.getString("hire_date"));
-			empDO.setJobId(rs.getString("job_id"));
-			list.add(empDO);
+		try {
+			//1. connect(DB 연결)
+			conn = DriverManager.getConnection(url, "hr", "hr");			
+			//2. statement(SQL 구문 준비)
+			String sql = "select * from employees order by employee_id";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			//3. execute
+			ResultSet rs = pstmt.executeQuery();
+			//4. 결과 처리
+			while(rs.next()) {
+				EmpDO empDO = new EmpDO();
+				empDO.setEmployeeId(rs.getString("EMPLOYEE_ID"));
+				empDO.setLastName(rs.getString("last_name"));
+				empDO.setEmail(rs.getString("email"));
+				empDO.setHireDate(rs.getString("hire_date"));
+				empDO.setJobId(rs.getString("job_id"));
+				list.add(empDO);
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();   
+		} finally {
+			try {				
+				conn.close();	
+				} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return list;
 	} 
