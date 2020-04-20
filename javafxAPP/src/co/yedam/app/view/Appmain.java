@@ -13,12 +13,9 @@ public static void main(String[] args) {
 	@Override
 	public void start(Stage stage) throws Exception {
 				Parent root = FXMLLoader.load(getClass().getResource("emp.fxml"));
-				Scene scene = new Scene(root,300,275);
+				Scene scene = new Scene(root,700,705);
 				stage.setTitle("FXML Welcome");
 				stage.setScene(scene);
 				stage.show();
-	}
-
-	
-	
+	}	
 }

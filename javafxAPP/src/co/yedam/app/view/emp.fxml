@@ -17,6 +17,7 @@
             <Button fx:id="del" mnemonicParsing="false" onAction="#empUpdate" text="수정" textAlignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#empSelect" text="조회" textAlignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#empSelectAll" text="전체조회" />
+            <Button mnemonicParsing="false" onAction="#delEmp" text="삭제" />
          </children>
       </HBox>
    </top>
@@ -43,13 +44,13 @@
             <TextField fx:id="txtEmail" />
             <TextField fx:id="txtHireDate" />
             <TextField fx:id="txtJobId" />
-            <TableView prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="tvEmp" onMouseClicked="#empInfo" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Employee_Id" />
-                <TableColumn prefWidth="75.0" text="Last_Name" />
-                  <TableColumn prefWidth="75.0" text="Email" />
-                  <TableColumn prefWidth="75.0" text="Hire_Date" />
-                  <TableColumn prefWidth="75.0" text="Job_Id" />
+                <TableColumn fx:id="colEmployeeId" prefWidth="75.0" text="Employee_Id" />
+                <TableColumn fx:id="colLastName" prefWidth="75.0" text="Last_Name" />
+                  <TableColumn fx:id="colEmail" prefWidth="75.0" text="Email" />
+                  <TableColumn fx:id="colHireDate" prefWidth="75.0" text="Hire_Date" />
+                  <TableColumn fx:id="colJobId" prefWidth="75.0" text="Job_Id" />
               </columns>
             </TableView>
          </children>

@@ -86,7 +86,7 @@ public class EmpDAO {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			// 3.execute
 			pstmt.setString(1, emp.getEmployeeId());
-			int r = pstmt.executeUpdate(sql);
+			int r = pstmt.executeUpdate();
 			System.out.println(r + "건 삭제됨");
 		} catch (SQLException e) {
 			e.printStackTrace();
