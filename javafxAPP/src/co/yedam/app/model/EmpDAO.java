@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EmpDAO {
 
@@ -99,5 +100,26 @@ public class EmpDAO {
 		}
 		// 4.조회 결과
 	}// end of delete()
+	
+	public ArrayList<EmpDO> selectAll() throws SQLException {//전체조회
+		ArrayList<EmpDO> list = new ArrayList<EmpDO>();
+		
+		// 3. SQL 구문 실행
+		String sql = " select * from departments order by employee_id";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setInt(1, dept_id);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			EmpDO empDO = new EmpDO();
+			empDO.setEmployeeId(rs.getString("employee_id"));
+			empDO.setLastName(rs.getString("last_name"));
+			empDO.setEmail(rs.getString("email"));
+			empDO.setHireDate(rs.getString("hire_date"));
+			empDO.setJobId(rs.getString("job_id"));
+			list.add(empDO);
+		}
+		return list;
+	} 
 
 }

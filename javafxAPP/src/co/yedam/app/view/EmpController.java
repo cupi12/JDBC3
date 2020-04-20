@@ -48,7 +48,7 @@ public class EmpController implements Initializable {
 		System.out.println("수정처리됨");
 	}
 
-	@FXML
+	@FXML //단건조회
 	public void empSelect(ActionEvent actionEvent) {
 		//조회할 사번을 DO 객체에 담음
 		EmpDO emp = new EmpDO();
@@ -64,6 +64,11 @@ public class EmpController implements Initializable {
 		txtJobId.setText(result.getJobId());
 		
 		System.out.println("조회처리됨");
+	}
+	
+	@FXML //전체조회 버튼 클릭 이벤트 핸들러
+	public void empSelectAll(ActionEvent actionEvent) {
+		
 	}
 
 }
